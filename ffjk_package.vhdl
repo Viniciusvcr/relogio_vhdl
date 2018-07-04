@@ -4,13 +4,13 @@ library ieee ;
 
 ENTITY ffjk IS
 	PORT(j, k, clr, clk : IN STD_LOGIC
-		q, qbar : BUFFER STD_LOGIC);
+		q, qbar : BUFFER BIT);
 END ffjk;
 
 ARCHITECTURE arch OF ffjk IS
 BEGIN
 	PROCESS(j,k,clr,clk)
-	VARIABLE qv, qvbar : STD_LOGIC;
+	VARIABLE qv, qvbar : BIT;
 	BEGIN
 		IF(clr = '0') THEN
 			qv := '0'
@@ -38,6 +38,6 @@ END arch;
 PACKAGE ffjk_package IS
 	COMPONENT ffjk
 		PORT(j, k, clr, clk : IN STD_LOGIC
-			q, qbar : BUFFER STD_LOGIC);
+			q, qbar : BUFFER BIT);
 	END COMPONENT;
 END ffjk_package;
