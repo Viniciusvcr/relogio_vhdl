@@ -3,7 +3,7 @@ library ieee ;
 	use ieee.numeric_std.all ;
 
 ENTITY ffjk IS
-	PORT(j, k, clr, clk : IN STD_LOGIC
+	PORT(j, k, clr, clk : IN BIT;
 		q, qbar : BUFFER BIT);
 END ffjk;
 
@@ -13,9 +13,9 @@ BEGIN
 	VARIABLE qv, qvbar : BIT;
 	BEGIN
 		IF(clr = '0') THEN
-			qv := '0'
+			qv := '0';
 			qvbar := NOT qv;
-		ELSIF(falling_edge(clk)) THEN
+		ELSIF(clk'EVENT AND clk = '0') THEN
 			IF(j = '1' AND k = '0') THEN
 				qv := '1';
 				qvbar := NOT qv;
@@ -37,7 +37,7 @@ END arch;
 
 PACKAGE ffjk_package IS
 	COMPONENT ffjk
-		PORT(j, k, clr, clk : IN STD_LOGIC
+		PORT(j, k, clr, clk : IN BIT;
 			q, qbar : BUFFER BIT);
 	END COMPONENT;
 END ffjk_package;
