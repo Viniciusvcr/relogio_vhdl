@@ -9,6 +9,8 @@ ENTITY cont_sinc_mod6 IS
 		q, qbar : BUFFER BIT_VECTOR (2 DOWNTO 0));
 END cont_sinc_mod6;
 
+	USE work.ffjk_package.all;
+
 ENTITY cont_sinc_mod10 IS
 	PORT(entrada, clr, clk : IN BIT;
 		q, qbar : BUFFER BIT_VECTOR (3 DOWNTO 0));
@@ -60,12 +62,12 @@ END arch_cont_sinc_mod10;
 
 PACKAGE cont_sinc_package IS
 	COMPONENT cont_sinc_mod6
-		PORT(entrada, clr, clk : IN STD_LOGIC;
+		PORT(entrada, clr, clk : IN BIT;
 			q, qbar : OUT BIT_VECTOR(2 DOWNTO 0));
 	END COMPONENT;
 
 	COMPONENT cont_sinc_mod10 IS
-		PORT(entrada, clr, clk : IN STD_LOGIC;
+		PORT(entrada, clr, clk : IN BIT;
 			q, qbar : BUFFER BIT_VECTOR (3 DOWNTO 0));
 	END COMPONENT;
 
