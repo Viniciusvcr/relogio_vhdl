@@ -36,7 +36,7 @@ SIGNAL and_mod_6_1, and_mod_6_2 : BIT;
 
 BEGIN
 	FF0 : ffjk PORT MAP(entrada, entrada, clr, clk, q(0), qbar(0));
-	AND1: and_2 PORT MAP(q(0), qbar(0), and_mod_6_1);
+	AND1: and_2 PORT MAP(q(0), qbar(2), and_mod_6_1);
 	FF1 : ffjk PORT MAP(and_mod_6_1, q(0), clr, clk, q(1), qbar(1));
 	AND2: and_2 PORT MAP(q(0), q(1), and_mod_6_2);
 	FF2 : ffjk PORT MAP(and_mod_6_2, q(0), clr, clk, q(2), qbar(2));
